@@ -125,4 +125,3 @@ class reservation
         return $this->wasDone;
     }
 }
-
