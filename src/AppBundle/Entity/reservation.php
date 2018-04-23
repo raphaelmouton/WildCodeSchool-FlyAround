@@ -18,7 +18,7 @@ class reservation
 
     public function __toString()
     {
-        // Return the Site object with "[ICAO] - [NAME][CITY]" format, when __toString is called.
+        // Return "id reservation" format, when __toString is called.
         return $this->id . "-";
     }
     /*

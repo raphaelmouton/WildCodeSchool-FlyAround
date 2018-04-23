@@ -19,7 +19,7 @@ class Flight
     public function __toString()
     {
         // Return "Departure and Arrival" format, when __toString is called.
-        return $this->takeOffTime. " " . $this->arrival . " ";
+        return $this->departure. " " . $this->arrival . " ";
     }
 
     /*
