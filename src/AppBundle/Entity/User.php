@@ -27,6 +27,11 @@ class User
      */
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="reviewAuthor")
+     */
+    private $reviewsAuthor;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
