@@ -1,0 +1,23 @@
+// assets/css/main.scss
+
+// customize some Bootstrap variables
+$brand-primary: darken(#000, 20%);
+
+// the ~ allows you to reference things in node_modules
+@import '~bootstrap/scss/bootstrap';
+
+.container{
+  color: $brand-primary;
+  font-size:15px;
+}
+
+.navbar-nav li{
+  font-size: 15px;
+  padding-left: 30px;
+  color:$brand-primary;
+}
+
+.navbar-nav li :hover{
+  text-decoration: none;
+
+}
