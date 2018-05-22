@@ -29,10 +29,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('flight_show', { 'id': flight.id }) }}">show</a>
+                            <a class="btn btn-primary" href="{{ path('flight_show', { 'id': flight.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('flight_edit', { 'id': flight.id }) }}">edit</a>
+                            <a class="btn btn-warning" href="{{ path('flight_edit', { 'id': flight.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -43,7 +43,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('flight_new') }}">Create a new flight</a>
+            <a class="btn btn-warning" href="{{ path('flight_new') }}">Create a new flight</a>
         </li>
     </ul>
 {% endblock %}
