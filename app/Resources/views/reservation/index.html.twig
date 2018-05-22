@@ -23,10 +23,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('reservation_show', { 'id': reservation.id }) }}">show</a>
+                            <a class="btn btn-primary" href="{{ path('reservation_show', { 'id': reservation.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
+                            <a class="btn btn-warning" href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('reservation_new') }}">Create a new reservation</a>
+            <a class="btn btn-warning" href="{{ path('reservation_new') }}">Create a new reservation</a>
         </li>
     </ul>
 {% endblock %}

@@ -27,10 +27,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('planemodel_show', { 'id': planeModel.id }) }}">show</a>
+                            <a class="btn btn-primary" href="{{ path('planemodel_show', { 'id': planeModel.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('planemodel_edit', { 'id': planeModel.id }) }}">edit</a>
+                            <a class="btn btn-warning" href="{{ path('planemodel_edit', { 'id': planeModel.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -41,7 +41,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('planemodel_new') }}">Create a new planeModel</a>
+            <a class="btn btn-warning" href="{{ path('planemodel_new') }}">Create a new planeModel</a>
         </li>
     </ul>
 {% endblock %}

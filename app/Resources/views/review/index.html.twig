@@ -23,10 +23,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('review_show', { 'id': review.id }) }}">show</a>
+                            <a class="btn btn-primary" href="{{ path('review_show', { 'id': review.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('review_edit', { 'id': review.id }) }}">edit</a>
+                            <a class="btn btn-warning" href="{{ path('review_edit', { 'id': review.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('review_new') }}">Create a new review</a>
+            <a class="btn btn-primary" href="{{ path('review_new') }}">Create a new review</a>
         </li>
     </ul>
 {% endblock %}
