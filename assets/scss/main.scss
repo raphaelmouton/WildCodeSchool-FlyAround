@@ -4,7 +4,7 @@
 $brand-primary: darken(#000, 20%);
 
 // the ~ allows you to reference things in node_modules
-@import '~bootstrap/scss/bootstrap';
+
 
 .container{
   color: $brand-primary;
@@ -21,3 +21,48 @@ $brand-primary: darken(#000, 20%);
   text-decoration: none;
 
 }
+.bg-dark{
+  background-color: black;
+  border-radius: 0;
+}
+.navbar-nav li  a{
+  color: white;
+}
+
+.navbar-nav li  a:hover{
+  color: cornflowerblue;
+  transition-duration: 3s;
+}
+input{
+  width: 100%;
+  border: 1px solid #EEEEEE;
+}
+input[type="radio"], input[type="checkbox"]{
+  width: 3%;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  margin-top: 20px;
+  padding: 20px;
+  width: 50%;
+  background-color: #1b1e21;
+  color: white;
+}
+
+textarea{
+  width: 100%;
+  border: 1px solid #EEEEEE;
+
+}
+th{
+  padding: 30px;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+td{
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+
+@import '~bootstrap/scss/bootstrap';
