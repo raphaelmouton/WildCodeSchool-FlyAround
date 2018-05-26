@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\reservation;
+use AppBundle\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -36,21 +37,39 @@ class reservationController extends Controller
      *
      * @Route("/new", name="reservation_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Mailer $mailer)
     {
         $reservation = new Reservation();
         $form = $this->createForm('AppBundle\Form\reservationType', $reservation);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($reservation);
             $em->flush();
+            //pilot mail
+            $mailer->sendEmail(true, $reservation->getFlight()->getPilot()->getEmail());
+            //passenger mail
+            $mailer->sendEmail(false, $this->getUser()->getEmail());
+            //pilot mail
+            $message = (new \Swift_Message('Reservation Flyaround'))
+                ->setFrom('reservation@flyaround.com')
+                ->setTo($reservation->getFlight()->getPilot()->getEmail())
+                ->setBody('Quelqu\' un vient de réserver une place sur votre vol.<br>Merci de voyager avec Flyaround',
+                    'text/html');
+            $this->get('mailer')->send($message);
 
+            //passenger mail
+            $message = (new \Swift_Message('Reservation Flyaround'))
+                ->setFrom('reservation@flyaround.com')
+                ->setTo($this->getUser()->getEmail())
+                ->setBody('Votre réservation est enregistrée.<br/>Merci de voyager avec Flyaround',
+                    'text/html');
+            $this->get('mailer')->send($message);
             return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
         }
-
         return $this->render('reservation/new.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
