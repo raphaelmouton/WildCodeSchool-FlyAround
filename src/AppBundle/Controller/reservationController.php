@@ -43,6 +43,7 @@ class reservationController extends Controller
     public function newAction(Request $request, Mailer $mailer)
     {
         $reservation = new Reservation();
+        $nbseat = $reservation->getNbReservedSeats();
         $form = $this->createForm('AppBundle\Form\reservationType', $reservation);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,26 +54,15 @@ class reservationController extends Controller
             $mailer->sendEmail(true, $reservation->getFlight()->getPilot()->getEmail());
             //passenger mail
             $mailer->sendEmail(false, $this->getUser()->getEmail());
-            //pilot mail
-            $message = (new \Swift_Message('Reservation Flyaround'))
-                ->setFrom('reservation@flyaround.com')
-                ->setTo($reservation->getFlight()->getPilot()->getEmail())
-                ->setBody('Quelqu\' un vient de réserver une place sur votre vol.<br>Merci de voyager avec Flyaround',
-                    'text/html');
-            $this->get('mailer')->send($message);
 
-            //passenger mail
-            $message = (new \Swift_Message('Reservation Flyaround'))
-                ->setFrom('reservation@flyaround.com')
-                ->setTo($this->getUser()->getEmail())
-                ->setBody('Votre réservation est enregistrée.<br/>Merci de voyager avec Flyaround',
-                    'text/html');
-            $this->get('mailer')->send($message);
-            return $this->redirectToRoute('reservation_show', array('id' => $reservation->getId()));
+            return $this->redirectToRoute('reservation_show', array(
+                'id' => $reservation->getId()));
         }
         return $this->render('reservation/new.html.twig', array(
             'reservation' => $reservation,
             'form' => $form->createView(),
+            'nbseat' => $nbseat,
+
         ));
     }
 

@@ -10,7 +10,7 @@ class Mailer
         $this->mailer = $mailer;
         $this->templating = $templating;
     }
-    public function sendEmail(bool $pilot, string $receiver)
+    public function sendEmail($pilot, $receiver)
     {
         $body = $this->templating->render('mails/registration.html.twig', [
             'receiver' => $receiver,

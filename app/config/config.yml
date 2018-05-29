@@ -61,22 +61,28 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
-# Swiftmailer Configuration
-#    mailer_transport: smtp
-#    mailer_host: 127.0.0.1
-#    mailer_user: null
-#    mailer_password: null
-#    mailer_noreply:
-#        - noreply@mydomain.com
 
-    mailer_transport: smtp
-    mailer_host:      smtp.mailtrap.io
-    mailer_user:  fc3e639d2fd796
-    mailer_password:  3596722359baef
+# Swiftmailer Configuration
+#config de prod
+#swiftmailer:
+#    transport: '%mailer_transport%'
+#    host: '%mailer_host%'
+#    port: '%mailer_port%'
+#    username: '%mailer_user%'
+#    password: '%mailer_password%'
+#    auth_mode: '%mailer_auth_mode%'
+#    encryption: '%mailer_encryption%'
+#    spool: { type: memory }
+
+#config de dev vers mailtrap
+swiftmailer:
+    spool:     { type: memory }
+    transport: smtp
+    host:      smtp.mailtrap.io
+    username:  fc3e639d2fd796
+    password:  3596722359baef
     auth_mode: cram-md5
-    mailer_port: 2525
-    mailer_noreply:
-        - noreply@mydomain.com
+    port: 2525
 
 
 # app/config/config.yml
