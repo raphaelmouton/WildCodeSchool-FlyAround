@@ -1,0 +1,18 @@
+{% extends 'layoutMail.html.twig' %}
+
+{% block stylesheets%}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+{% endblock %}
+
+{% block body %}
+    <h1>Resevation Flyaround</h1>
+    <h2>Destinataire :</h2>
+
+    <p>{{ receiver }}</p>
+    {% if pilot %}
+        <p>Votre réservation est enregistrée. Merci de voyager avec Flyaround </p>
+        <img src="https://informationstrategyrsm.files.wordpress.com/2015/10/airline-tix_3055215b.jpg">
+    {% else %}
+        <p>{{ receiver }} vient de réserver une place sur votre vol.</p>
+    {% endif %}
+{% endblock %}
